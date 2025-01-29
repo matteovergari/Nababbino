@@ -5,8 +5,8 @@ using UnityEngine;
 public class NababbinoDataParser : MonoBehaviour
 {
     public int LedValueToSet = 255;
-    
-    public float AccX, AccY, AccZ, GyroX, GyroY, GyroZ, Roll, Pitch, Yaw, Temperature;
+
+    public float AccX, AccY, AccZ, GyroX, GyroY, GyroZ, Roll, Pitch, Yaw, Temperature, MicLevel;
     public int CapA, CapB;
     public bool LeftButton, RightButton, UpButton, DownButton;
 
@@ -42,6 +42,7 @@ public class NababbinoDataParser : MonoBehaviour
         Yaw = float.Parse(allDatasAsStrings[8], System.Globalization.CultureInfo.InvariantCulture);
 
         Temperature = float.Parse(allDatasAsStrings[9], System.Globalization.CultureInfo.InvariantCulture);
+        MicLevel = float.Parse(allDatasAsStrings[16], System.Globalization.CultureInfo.InvariantCulture);
 
         CapA = int.Parse(allDatasAsStrings[10], System.Globalization.CultureInfo.InvariantCulture);
         CapB = int.Parse(allDatasAsStrings[11], System.Globalization.CultureInfo.InvariantCulture);
@@ -50,6 +51,8 @@ public class NababbinoDataParser : MonoBehaviour
         RightButton = int.Parse(allDatasAsStrings[13], System.Globalization.CultureInfo.InvariantCulture) == 1;
         UpButton = int.Parse(allDatasAsStrings[14], System.Globalization.CultureInfo.InvariantCulture) == 1;
         DownButton = int.Parse(allDatasAsStrings[15], System.Globalization.CultureInfo.InvariantCulture) == 1;
+        
+
     }
 
 }

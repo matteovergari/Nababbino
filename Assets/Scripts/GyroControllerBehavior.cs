@@ -8,7 +8,11 @@ public class GyroControllerBehavior : MonoBehaviour
     public float Roll;
     public float Pitch;
     public float Yaw;
-    public float DeadZone = 40f;
+    public float smoothedRoll;
+    public float smoothedPitch;
+    public float smoothedYaw;
+    public float DeadZone = 1f;
+    public float Smoothness = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +44,11 @@ public class GyroControllerBehavior : MonoBehaviour
         {
             Yaw = 0;
         }
+
+        smoothedPitch = Mathf.Lerp(smoothedPitch, Pitch, Smoothness * Time.deltaTime);
+        smoothedYaw = Mathf.Lerp(smoothedYaw, Yaw, Smoothness * Time.deltaTime);
+        smoothedRoll = Mathf.Lerp(smoothedRoll, Roll, Smoothness * Time.deltaTime);
+
 
         transform.eulerAngles = new Vector3(360 - Pitch,360 - Yaw,360 - Roll);
     }   

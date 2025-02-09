@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using LLMUnity;
 using TMPro;
-using UnityEditor.VersionControl;
 using UnityEngine.Events;
 
 public class TestCallFunction : MonoBehaviour
@@ -12,6 +11,7 @@ public class TestCallFunction : MonoBehaviour
     public TMP_InputField MyInputField;
     public TMP_Text TextResponse;
     public AiMultipleChoiceEvent[] MultipleChoiceEvents;
+    public Transform playerTransform; // Add this reference
     string aiResponse;
 
     private void Start()
@@ -20,6 +20,7 @@ public class TestCallFunction : MonoBehaviour
         MyCharacter.grammarString = MultipleChoiceGrammar();
         print(ConstructPrompt("piedi"));
     }
+
     public void TriggerLLM(string inputString)
     {
         _ = MyCharacter.Chat(ConstructPrompt(inputString), AiResponse, ResponseCompleted);
@@ -36,8 +37,56 @@ public class TestCallFunction : MonoBehaviour
     void ResponseCompleted()
     {
         print("risposta completa, risultato:" + aiResponse);
-        GetEventFromTopic(aiResponse).Invoke();
+        InvokeRandomEvent();
+    }
 
+    void InvokeRandomEvent()
+    {
+        GameObject nearestEnemy = GetNearestEnemy();
+        if (nearestEnemy != null)
+        {
+            float distance = Vector3.Distance(playerTransform.position, nearestEnemy.transform.position);
+            float randomChance = Random.Range(0f, 1f);
+            float maxDistance = 5f; // Adjust this value to change the maximum distance for the random event to occur
+
+            if (distance <= maxDistance && randomChance <= (distance / maxDistance) * 0.5f)
+            {
+                // Invoke a random event
+                int randomIndex = Random.Range(0, MultipleChoiceEvents.Length);
+                MultipleChoiceEvents[randomIndex].AiTriggerEvent.Invoke();
+                Debug.Log("Random event");
+            }
+            else
+            {
+                // Invoke the correct event
+                GetEventFromTopic(aiResponse).Invoke();
+                Debug.Log("Got it");
+            }
+        }
+        else
+        {
+            // Invoke the correct event if no enemy is found
+            GetEventFromTopic(aiResponse).Invoke();
+        }
+    }
+
+    GameObject GetNearestEnemy()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject nearestEnemy = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distance = Vector3.Distance(playerTransform.position, enemy.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                nearestEnemy = enemy;
+            }
+        }
+
+        return nearestEnemy;
     }
 
     UnityEvent GetEventFromTopic(string topic)
@@ -52,6 +101,7 @@ public class TestCallFunction : MonoBehaviour
         }
         return null;
     }
+
     string MultipleChoiceGrammar()
     {
         return "root ::= (\"" + string.Join("\" | \"", GetFunctionNames()) + "\")";
@@ -80,7 +130,6 @@ public class TestCallFunction : MonoBehaviour
             prompt += MultipleChoiceEvents[i].TopicString;
             prompt += "\n";
         }
-
 
         foreach (string functionName in GetFunctionNames()) prompt += $"- {functionName}\n";
         prompt += "\nAnswer directly with the choice";

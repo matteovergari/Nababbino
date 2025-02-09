@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class FriendCommandBehavior : MonoBehaviour
 {
     public Transform BoxTransform;
     public Transform StairsTransform;
     public Transform BarrelTransform;
+    public NavMeshAgent NavMeshAgent;
     // Start is called before the first frame update
     void Start()
     {
-
+        NavMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -21,16 +23,16 @@ public class FriendCommandBehavior : MonoBehaviour
 
     public void MoveToBox()
     {
-        transform.position = BoxTransform.position;
+        NavMeshAgent.SetDestination(BoxTransform.position);
     }
 
     public void MoveToStairs()
     {
-        transform.position = StairsTransform.position;
+        NavMeshAgent.SetDestination(StairsTransform.position);
     }
 
     public void MoveToBarrel()
     {
-        transform.position = BarrelTransform.position;
+        NavMeshAgent.SetDestination(BarrelTransform.position);
     }
 }

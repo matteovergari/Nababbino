@@ -11,7 +11,7 @@ public class TestCallFunction : MonoBehaviour
     public TMP_InputField MyInputField;
     public TMP_Text TextResponse;
     public AiMultipleChoiceEvent[] MultipleChoiceEvents;
-    public Transform playerTransform; // Add this reference
+    public Transform playerTransform;
     string aiResponse;
 
     private void Start()
@@ -34,14 +34,37 @@ public class TestCallFunction : MonoBehaviour
         aiResponse = inResponse;
     }
 
+    GameObject GetNearestEnemy()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject nearestEnemy = null;
+        float minDistance = Mathf.Infinity;
+        Debug.Log("Got Enemies");
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distance = Vector3.Distance(playerTransform.position, enemy.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                nearestEnemy = enemy;
+            }
+        }
+        Debug.Log("Returning Enemies");
+        return nearestEnemy;
+        
+    }
+
     void ResponseCompleted()
     {
         print("risposta completa, risultato:" + aiResponse);
         InvokeRandomEvent();
     }
 
+
     void InvokeRandomEvent()
     {
+        Debug.Log("Invoking Event");
         GameObject nearestEnemy = GetNearestEnemy();
         if (nearestEnemy != null)
         {
@@ -68,25 +91,6 @@ public class TestCallFunction : MonoBehaviour
             // Invoke the correct event if no enemy is found
             GetEventFromTopic(aiResponse).Invoke();
         }
-    }
-
-    GameObject GetNearestEnemy()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject nearestEnemy = null;
-        float minDistance = Mathf.Infinity;
-
-        foreach (GameObject enemy in enemies)
-        {
-            float distance = Vector3.Distance(playerTransform.position, enemy.transform.position);
-            if (distance < minDistance)
-            {
-                minDistance = distance;
-                nearestEnemy = enemy;
-            }
-        }
-
-        return nearestEnemy;
     }
 
     UnityEvent GetEventFromTopic(string topic)

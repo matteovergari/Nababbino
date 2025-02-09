@@ -47,6 +47,7 @@ public class EnemyPatrollingBehavior : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             ChaseTimer = Time.time;
+            Debug.Log("enemy trigger player");
         }
     }
     void OnTriggerStay(Collider other)

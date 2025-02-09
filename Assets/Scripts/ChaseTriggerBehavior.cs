@@ -12,9 +12,11 @@ public class ChaseTriggerBehavior : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("trigger enter");
         if (other.CompareTag("Player"))
         {
             chaseTimer = Time.time;
+            Debug.Log("trigger player");
         }
     }
 
@@ -23,8 +25,9 @@ public class ChaseTriggerBehavior : MonoBehaviour
         if (other.CompareTag("Player") && Time.time - chaseTimer > chaseDelay)
         {
             isChasing = true;
-            chaseTimer = 0f;
             enemy.IsChasing = true;
+            chaseTimer = 0f;
+            Debug.Log("trigger stay");
         }
     }
 

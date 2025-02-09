@@ -24,15 +24,18 @@ public class FriendCommandBehavior : MonoBehaviour
     public void MoveToBox()
     {
         NavMeshAgent.SetDestination(BoxTransform.position);
+        Debug.Log("MoveToBox");
     }
 
     public void MoveToStairs()
     {
         NavMeshAgent.SetDestination(StairsTransform.position);
+        Debug.Log("MoveToStairs");
     }
 
     public void MoveToBarrel()
     {
         NavMeshAgent.SetDestination(BarrelTransform.position);
+        Debug.Log("MoveToBarrel");
     }
 }

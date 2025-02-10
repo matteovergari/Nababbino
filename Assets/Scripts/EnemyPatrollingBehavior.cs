@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using JetBrains.Annotations;
 
 public class EnemyPatrollingBehavior : MonoBehaviour
 {
@@ -10,14 +11,16 @@ public class EnemyPatrollingBehavior : MonoBehaviour
     private Animator animator; // Add this reference
     private int currentPatrolIndex = 0;
     public Collider ChaseTrigger;
-    public float ChaseDelay;
+    public float ChaseDelay = 2f;
     public float ChaseTimer = 0f;
     public bool IsChasing = false;
+    public GameObject QuestionSprite;
+    public GameObject CaughtSprite;
 
     public float waitTime = 2f;
     public float rotationSpeed = 60f; // Degrees per second
 
-    private enum EnemyState { Idle, Walking, Chasing }
+    private enum EnemyState { Idle, Walking, Chasing, Caught }
     private EnemyState currentState = EnemyState.Idle;
 
     public void Update()
@@ -30,7 +33,7 @@ public class EnemyPatrollingBehavior : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>(); // Add this line
+        animator = GetComponent<Animator>();
         ChaseTrigger.isTrigger = true;
 
         if (patrolPoints.Length > 0)
@@ -48,14 +51,17 @@ public class EnemyPatrollingBehavior : MonoBehaviour
         {
             ChaseTimer = Time.time;
             Debug.Log("enemy trigger player");
+            currentState = EnemyState.Caught;
+
         }
     }
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && Time.time - ChaseTimer > ChaseDelay)
+        if (other.CompareTag("Player") && ChaseTimer > ChaseDelay)
         {
-            IsChasing = true;
+            currentState = EnemyState.Chasing;
             ChaseTimer = 0f;
+
         }
     }
 
@@ -82,6 +88,9 @@ public class EnemyPatrollingBehavior : MonoBehaviour
                 case EnemyState.Chasing:
                     yield return StartCoroutine(ChaseCoroutine());
                     break;
+                case EnemyState.Caught:
+                    yield return StartCoroutine(CaughtCoroutine());
+                    break;
             }
         }
     }
@@ -90,7 +99,7 @@ public class EnemyPatrollingBehavior : MonoBehaviour
     {
         currentState = EnemyState.Idle;
         agent.isStopped = true;
-        animator.SetTrigger("Idle"); // Add this line
+        animator.SetTrigger("Idle");
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -101,7 +110,7 @@ public class EnemyPatrollingBehavior : MonoBehaviour
     {
         currentState = EnemyState.Walking;
         agent.isStopped = false;
-        animator.SetTrigger("Walk"); // Add this line
+        animator.SetTrigger("Walk");
         agent.destination = patrolPoints[currentPatrolIndex].position;
 
         while (agent.pathPending || agent.remainingDistance > 0.1f)
@@ -109,24 +118,38 @@ public class EnemyPatrollingBehavior : MonoBehaviour
             yield return null;
         }
 
-        // Wait and rotate
         yield return StartCoroutine(WaitAndRotate());
 
-        // Move to the next patrol point, or loop back to the first one
         currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
 
         currentState = EnemyState.Idle;
     }
-    public void Chase()
+    IEnumerator CaughtCoroutine()
     {
+        QuestionSprite.SetActive(true);
+        agent.isStopped = true;
+        animator.SetTrigger("Caught");
+
+        yield return new WaitForSeconds(2f);
+
+        QuestionSprite.SetActive(false);
+        agent.isStopped = false;
+
         StartCoroutine(ChaseCoroutine());
+
+        yield return null;
     }
 
     IEnumerator ChaseCoroutine()
     {
+        CaughtSprite.SetActive(true);
+        QuestionSprite.SetActive(false);
         currentState = EnemyState.Chasing;
         agent.isStopped = false;
         animator.SetTrigger("Chase");
+
+
+
 
         while (IsChasing && Vector3.Distance(transform.position, target.position) > 0.1f)
         {

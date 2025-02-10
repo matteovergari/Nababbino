@@ -6,7 +6,7 @@ public class NababbinoDataParser : MonoBehaviour
 {
     public int LedValueToSet = 255;
 
-    public float AccX, AccY, AccZ, GyroX, GyroY, GyroZ, Roll, Pitch, Yaw, Temperature, MicLevel;
+    public float AccX, AccY, AccZ, GyroX, GyroY, GyroZ, Roll, Pitch, Yaw, Temperature, MicLevel, Potentiometer;
     public int CapA, CapB;
     public bool LeftButton, RightButton, UpButton, DownButton;
 
@@ -43,6 +43,7 @@ public class NababbinoDataParser : MonoBehaviour
 
         Temperature = float.Parse(allDatasAsStrings[9], System.Globalization.CultureInfo.InvariantCulture);
         MicLevel = float.Parse(allDatasAsStrings[16], System.Globalization.CultureInfo.InvariantCulture);
+        Potentiometer = -(float.Parse(allDatasAsStrings[17], System.Globalization.CultureInfo.InvariantCulture) -2f);
 
         CapA = int.Parse(allDatasAsStrings[10], System.Globalization.CultureInfo.InvariantCulture);
         CapB = int.Parse(allDatasAsStrings[11], System.Globalization.CultureInfo.InvariantCulture);

@@ -8,6 +8,7 @@ public class FriendCommandBehavior : MonoBehaviour
     public Transform BoxTransform;
     public Transform StairsTransform;
     public Transform BarrelTransform;
+    public Transform SafeTransform;
     public NavMeshAgent NavMeshAgent;
     public GameObject UI;
     public GameObject GameOverUI;
@@ -41,6 +42,11 @@ public class FriendCommandBehavior : MonoBehaviour
         Debug.Log("MoveToBarrel");
     }
 
+    public void MoveToSafe()
+    {
+        NavMeshAgent.SetDestination(SafeTransform.position);
+        Debug.Log("MoveToSafe");
+    }
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))

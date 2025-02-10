@@ -15,6 +15,6 @@ public class MicrophoneManager : MonoBehaviour
         String[] allDatasAsStrings = Mic.Split('/');
 
         MicLevel = float.Parse(allDatasAsStrings[16]);
-        targetObject.transform.localScale = new Vector3(MicLevel, targetObject.transform.localScale.y, MicLevel);
+        targetObject.transform.localScale = new Vector3(MicLevel * 20f, targetObject.transform.localScale.y, MicLevel * 20f);
     }
 }

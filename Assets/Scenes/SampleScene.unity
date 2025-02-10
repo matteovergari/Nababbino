@@ -1413,7 +1413,7 @@ MonoBehaviour:
   contextSize: 8192
   batchSize: 512
   model: llama-3.2-1b-instruct-q4_k_m.gguf
-  chatTemplate: chatml
+  chatTemplate: llama3 chat
   lora: 
   loraWeights: 
   flashAttention: 0
@@ -2714,7 +2714,7 @@ GameObject:
   - component: {fileID: 1693969022}
   - component: {fileID: 1693969026}
   m_Layer: 0
-  m_Name: Box
+  m_Name: Wood Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3620,7 +3620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4739149413645958699, guid: 822a43fef73f91643a3c1a0fb81e4b1d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.08
+      value: -5.5
       objectReference: {fileID: 0}
     - target: {fileID: 4739149413645958699, guid: 822a43fef73f91643a3c1a0fb81e4b1d, type: 3}
       propertyPath: m_LocalRotation.w

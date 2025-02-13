@@ -33816,6 +33816,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TAPPETO
       objectReference: {fileID: 0}
+    - target: {fileID: 7311967924608526764, guid: d7568734112a75943a3fcb1603b76b93, type: 3}
+      propertyPath: m_TagString
+      value: CARPET
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -48566,12 +48570,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8432831274012128271, guid: 0dca863db9548064fbc2e7a4c0282f35, type: 3}
+    - {fileID: 8759214465473470872, guid: 0dca863db9548064fbc2e7a4c0282f35, type: 3}
+    - {fileID: 6288102399425385431, guid: 0dca863db9548064fbc2e7a4c0282f35, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 488331422113741629, guid: 0dca863db9548064fbc2e7a4c0282f35, type: 3}
       insertIndex: -1
       addedObject: {fileID: 137660780}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2951770088302338175, guid: 0dca863db9548064fbc2e7a4c0282f35, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1588970372}
   m_SourcePrefab: {fileID: 100100000, guid: 0dca863db9548064fbc2e7a4c0282f35, type: 3}
 --- !u!1001 &1287084101
 PrefabInstance:
@@ -59881,6 +59890,31 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1846660998888005326, guid: 4f74f62cde2a2df4abb74f6abfea6e90, type: 3}
+--- !u!1 &1588970369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2951770088302338175, guid: 0dca863db9548064fbc2e7a4c0282f35, type: 3}
+  m_PrefabInstance: {fileID: 1283468699}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1588970372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588970369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd1c63b2e68058439d12d703eb82477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTags:
+  - BLACK_CHEST
+  - BROWN_BOX
+  - COLUMNS
+  - PLANT
+  - CORNER
+  prefabToPlace: {fileID: 3553824226864865844, guid: b5f89153c7d28bb4da5103e516f609fa, type: 3}
+  maxDistance: Infinity
 --- !u!1001 &1589530462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82780,6 +82814,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1142562472}
           m_TargetAssemblyTypeName: FriendCommandBehavior, Assembly-CSharp
           m_MethodName: MoveToColumn
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - TopicString: Carpet
+    AiTriggerEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1142562472}
+          m_TargetAssemblyTypeName: FriendCommandBehavior, Assembly-CSharp
+          m_MethodName: MoveToCarpets
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

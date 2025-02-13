@@ -10,6 +10,7 @@ TagManager:
   - PLANT
   - COLUMNS
   - CORNER
+  - CARPET
   layers:
   - Default
   - TransparentFX

@@ -92,6 +92,33 @@ public class FriendCommandBehavior : MonoBehaviour
         }
     }
 
+    public void MoveToCarpets()
+    {
+        GameObject[] carpets = GameObject.FindGameObjectsWithTag("CARPET");
+        Transform closestCarpet = null;
+        float shortestDistance = Mathf.Infinity;
+
+        foreach (GameObject carpet in carpets)
+        {
+            float distance = Vector3.Distance(transform.position, carpet.transform.position);
+            if (distance < shortestDistance)
+            {
+                shortestDistance = distance;
+                closestCarpet = carpet.transform;
+            }
+        }
+
+        if (closestCarpet != null)
+        {
+            NavMeshAgent.SetDestination(closestCarpet.position);
+            Debug.Log("Moving to the closest carpet");
+        }
+        else
+        {
+            Debug.LogWarning("No carpet found");
+        }
+    }
+
     public void MoveToSafe()
     {
         NavMeshAgent.SetDestination(SafeTransform.position);

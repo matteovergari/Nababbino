@@ -9,6 +9,7 @@ TagManager:
   - BROWN_BOX
   - PLANT
   - COLUMNS
+  - CORNER
   layers:
   - Default
   - TransparentFX

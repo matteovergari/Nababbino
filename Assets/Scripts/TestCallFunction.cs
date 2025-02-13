@@ -65,32 +65,32 @@ public class TestCallFunction : MonoBehaviour
     void InvokeRandomEvent()
     {
         Debug.Log("Invoking Event");
-        GameObject nearestEnemy = GetNearestEnemy();
-        if (nearestEnemy != null)
-        {
-            float distance = Vector3.Distance(playerTransform.position, nearestEnemy.transform.position);
-            float randomChance = Random.Range(0f, 1f);
-            float maxDistance = 5f; // Adjust this value to change the maximum distance for the random event to occur
+        //GameObject nearestEnemy = GetNearestEnemy();
+        //if (nearestEnemy != null)
+        //{
+        //    float distance = Vector3.Distance(playerTransform.position, nearestEnemy.transform.position);
+        //    float randomChance = Random.Range(0f, 1f);
+        //    float maxDistance = 5f; // Adjust this value to change the maximum distance for the random event to occur
 
-            if (distance <= maxDistance && randomChance <= (distance / maxDistance) * 0.5f)
-            {
-                // Invoke a random event
-                int randomIndex = Random.Range(0, MultipleChoiceEvents.Length);
-                MultipleChoiceEvents[randomIndex].AiTriggerEvent.Invoke();
-                Debug.Log("Random event");
-            }
-            else
-            {
-                // Invoke the correct event
+        //    if (distance <= maxDistance && randomChance <= (distance / maxDistance) * 0.5f)
+        //    {
+        //        // Invoke a random event
+        //        int randomIndex = Random.Range(0, MultipleChoiceEvents.Length);
+        //        MultipleChoiceEvents[randomIndex].AiTriggerEvent.Invoke();
+        //        Debug.Log("Random event");
+        //    }
+        //    else
+        //    {
+        //        // Invoke the correct event
                 GetEventFromTopic(aiResponse).Invoke();
                 Debug.Log("Got it");
-            }
-        }
-        else
-        {
-            // Invoke the correct event if no enemy is found
-            GetEventFromTopic(aiResponse).Invoke();
-        }
+        //    }
+        //}
+        //else
+        //{
+        //    // Invoke the correct event if no enemy is found
+        //    GetEventFromTopic(aiResponse).Invoke();
+        //}
     }
 
     UnityEvent GetEventFromTopic(string topic)

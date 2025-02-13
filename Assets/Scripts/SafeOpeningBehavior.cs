@@ -34,21 +34,24 @@ public class SafeOpeningBehavior : MonoBehaviour
         String[] allDatasAsStrings = Pot.Split('/');
 
         PotentiometerValue = -(float.Parse(allDatasAsStrings[17], System.Globalization.CultureInfo.InvariantCulture) - 2f);
-        Knob.transform.rotation = Quaternion.Euler(0f,-90f, PotentiometerValue * 180f);
-        if (PotentiometerValue == Combination1 && !combination1Played)
+        Knob.transform.rotation = Quaternion.Euler(0f, -90f, PotentiometerValue * 180f);
+
+        if (Mathf.Abs(PotentiometerValue - Combination1) <= 0.2f && !combination1Played)
         {
             audioSource.PlayOneShot(Combination1Sound);
             combination1Played = true;
         }
-        else if (PotentiometerValue == Combination2 && combination1Played && !combination2Played)
+        else if (Mathf.Abs(PotentiometerValue - Combination2) <= 0.2f && combination1Played && !combination2Played)
         {
             audioSource.PlayOneShot(Combination2Sound);
             combination2Played = true;
+            Debug.Log("Second Combination");
         }
-        else if (PotentiometerValue == Combination3 && combination2Played && !combination3Played)
+        else if (Mathf.Abs(PotentiometerValue - Combination3) <= 0.2f && combination2Played && !combination3Played)
         {
             audioSource.PlayOneShot(Combination3Sound);
             combination3Played = true;
+            Debug.Log("Third Combination");
 
             if (correctOrder)
             {
@@ -60,7 +63,6 @@ public class SafeOpeningBehavior : MonoBehaviour
             }
         }
     }
-
     private void ResetCombinations()
     {
         combination1Played = false;

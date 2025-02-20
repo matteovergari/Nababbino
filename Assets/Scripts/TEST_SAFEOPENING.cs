@@ -8,6 +8,8 @@ public class TEST_SAFEOPENING : MonoBehaviour
 {
     public float PotentiometerValue;
     public GameObject Door;
+    public GameObject WinUI;
+    public GameObject GameUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,14 @@ public class TEST_SAFEOPENING : MonoBehaviour
 
         PotentiometerValue = -(float.Parse(allDatasAsStrings[17], System.Globalization.CultureInfo.InvariantCulture) - 2f);
 
-            Door.transform.eulerAngles = new Vector3(0f, (90f * PotentiometerValue)- 70f, 0f);
+        Door.transform.eulerAngles = new Vector3(0f, (90f * PotentiometerValue)- 70f, 0f);
+
+        if (PotentiometerValue >= 1.8f)
+        {
+            Time.timeScale = 0f;
+           WinUI.SetActive(true);
+           GameUI.SetActive(false);
+        } 
+
     }
 }

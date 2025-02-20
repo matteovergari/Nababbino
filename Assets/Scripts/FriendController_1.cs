@@ -8,6 +8,7 @@ public class FriendCommandBehavior : MonoBehaviour
     public Transform StairsTransform;
     public Transform SafeTransform;
     public Transform EntranceTransform;
+    public Transform LaserTransform;
     public NavMeshAgent NavMeshAgent;
     public GameObject UI;
     public GameObject GameOverUI;
@@ -52,11 +53,45 @@ public class FriendCommandBehavior : MonoBehaviour
         }
     }
 
+    public void MoveToShelf()
+    {
+        // Find the closest SHELF object
+        GameObject[] shelves = GameObject.FindGameObjectsWithTag("SHELF");
+        Transform closestShelf = null;
+        float shortestDistance = Mathf.Infinity;
+
+        foreach (GameObject shelf in shelves)
+        {
+            float distance = Vector3.Distance(transform.position, shelf.transform.position);
+            if (distance < shortestDistance)
+            {
+                shortestDistance = distance;
+                closestShelf = shelf.transform;
+            }
+        }
+
+        // Move to the closest SHELF
+        if (closestShelf != null)
+        {
+            NavMeshAgent.SetDestination(closestShelf.position);
+            Debug.Log("Moving to the closest shelf");
+        }
+        else
+        {
+            Debug.LogWarning("No shelf found");
+        }
+    }
+
 
     public void MoveToEntrance()
     {
         NavMeshAgent.SetDestination(EntranceTransform.position);
         Debug.Log("MoveToEntrance");
+    }
+    public void MoveToLaser()
+    {
+        NavMeshAgent.SetDestination(LaserTransform.position);
+        Debug.Log("MoveToLaser");
     }
 
     public void MoveToStairs()

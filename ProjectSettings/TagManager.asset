@@ -11,6 +11,8 @@ TagManager:
   - COLUMNS
   - CORNER
   - CARPET
+  - SHELF
+  - LASER
   layers:
   - Default
   - TransparentFX

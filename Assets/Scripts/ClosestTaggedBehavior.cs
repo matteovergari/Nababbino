@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ClosestTaggedBehavior : MonoBehaviour
 {
-    public string[] targetTags = { "BLACK_CHEST", "BROWN_BOX", "COLUMNS", "PLANT", "CORNER" };
+    public string[] targetTags = { "BLACK_CHEST", "BROWN_BOX", "COLUMNS", "PLANT", "SHELF", "CARPET"  };
     public GameObject prefabToPlace;
     public float maxDistance = Mathf.Infinity;
 

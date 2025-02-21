@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SCHERMATA DI INIZIO.unity
+    guid: 7700b2a08fa606c458b3180187ad79da
+  - enabled: 1
+    path: Assets/Scenes/Level design.unity
+    guid: b0cc9cee3130f124aaf01e1aa9268614
+  - enabled: 1
+    path: Assets/Scenes/SCHERMATA DI VITTORIA.unity
+    guid: df186fc4f0eee4b4fa8024133acadc1f
+  - enabled: 1
+    path: Assets/Scenes/SCHERMATA DI SCONFITTA.unity
+    guid: 9483280874f7b694290470f3e71020c8
   m_configObjects: {}

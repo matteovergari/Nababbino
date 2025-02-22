@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class FriendCommandBehavior : MonoBehaviour
 {
@@ -220,9 +221,8 @@ public class FriendCommandBehavior : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Time.timeScale = 0f;
-            GameOverUI.SetActive(true);
-            UI.SetActive(false);
+            SceneManager.LoadScene("SCHERMATA DI SCONFITTA");
+
         }
     }
 }

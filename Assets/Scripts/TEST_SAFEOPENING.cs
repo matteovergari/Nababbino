@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TEST_SAFEOPENING : MonoBehaviour
 {
@@ -31,9 +32,7 @@ public class TEST_SAFEOPENING : MonoBehaviour
 
         if (PotentiometerValue >= 1.8f)
         {
-            Time.timeScale = 0f;
-           WinUI.SetActive(true);
-           GameUI.SetActive(false);
+            SceneManager.LoadScene("SCHERMATA DI VITTORIA");
         } 
 
     }

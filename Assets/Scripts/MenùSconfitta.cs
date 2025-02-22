@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class DefeatMenu : MonoBehaviour
 {
-    public void RestartGame()
+    public void RestartGame() 
     {
         SceneManager.LoadScene("Level design");
     }

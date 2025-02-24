@@ -2799,7 +2799,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &60391631
 Transform:
   m_ObjectHideFlags: 0
@@ -21103,7 +21103,7 @@ GameObject:
   - component: {fileID: 442008243}
   - component: {fileID: 442008245}
   - component: {fileID: 442008244}
-  - component: {fileID: 442008246}
+  - component: {fileID: 442008248}
   - component: {fileID: 442008247}
   m_Layer: 0
   m_Name: default
@@ -21177,20 +21177,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442008242}
   m_Mesh: {fileID: -2432090755550338912, guid: 9fe21164336b4ce4a92d62453fb67ae4, type: 3}
---- !u!114 &442008246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 442008242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfc5e313b0461ed449a7ec6adb877891, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Camera: {fileID: 2106011025}
-  PreviousCamera: {fileID: 152676539}
 --- !u!65 &442008247
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21212,6 +21198,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.9938216, y: 33.580692, z: 76.83964}
   m_Center: {x: -91.37047, y: -14.96142, z: 31.99443}
+--- !u!114 &442008248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442008242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d31d70836b996854cb75d919960d0f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObjectToActivate: {fileID: 0}
+  targetObjectToActivate2: {fileID: 0}
+  targetObjectToActivate3: {fileID: 0}
+  targetObjectToDeactivate: {fileID: 0}
+  targetObjectToDeactivate2: {fileID: 0}
 --- !u!1001 &442120712
 PrefabInstance:
   m_ObjectHideFlags: 0

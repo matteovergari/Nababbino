@@ -5,7 +5,6 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     public GameObject Camera;
-    public GameObject PreviousCamera;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +21,12 @@ public class CameraManager : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Camera.SetActive(true);
-            PreviousCamera.SetActive(false);
+            GameObject[] cameras = GameObject.FindGameObjectsWithTag("Camera");
+            foreach (GameObject camera in cameras)
+            {
+                camera.SetActive(false);
+            }
+            Camera.SetActive(true); 
         }
     }
 }

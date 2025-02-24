@@ -13,6 +13,7 @@ TagManager:
   - CARPET
   - SHELF
   - LASER
+  - Camera
   layers:
   - Default
   - TransparentFX

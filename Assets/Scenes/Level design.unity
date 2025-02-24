@@ -2766,7 +2766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &60391631
 Transform:
   m_ObjectHideFlags: 0
@@ -6301,7 +6301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137660777}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08013223, y: -0.6443373, z: 0.068163924, w: 0.7574708}
+  m_LocalRotation: {x: 0.08013223, y: -0.64433724, z: 0.06816391, w: 0.75747085}
   m_LocalPosition: {x: 100.012825, y: 19.885, z: -2.2420921}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -20899,6 +20899,7 @@ GameObject:
   - component: {fileID: 442008244}
   - component: {fileID: 442008247}
   - component: {fileID: 442008248}
+  - component: {fileID: 442008249}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -21005,6 +21006,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 2106011025}
+--- !u!65 &442008249
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442008242}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 53.68574, y: 40.259216, z: 6.3161445}
+  m_Center: {x: 14.460213, y: -18.30067, z: 90.98323}
 --- !u!1001 &442120712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97029,7 +97051,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2049002391}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.06816403, y: -0.75746995, z: 0.08013214, w: -0.64433825}
+  m_LocalRotation: {x: -0.06816401, y: -0.75747, z: 0.08013214, w: -0.6443382}
   m_LocalPosition: {x: 629.6846, y: 171.74783, z: -1098.7483}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
@@ -99213,7 +99235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2096619537
 Transform:
   m_ObjectHideFlags: 0
@@ -102126,6 +102148,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1142562472}
           m_TargetAssemblyTypeName: FriendCommandBehavior, Assembly-CSharp
           m_MethodName: MoveToShelf
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - TopicString: Laser
+    AiTriggerEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1142562472}
+          m_TargetAssemblyTypeName: FriendCommandBehavior, Assembly-CSharp
+          m_MethodName: MoveToLaser
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

@@ -20813,8 +20813,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.747332, y: 35.51737, z: 111.13326}
-  m_Center: {x: 40.053192, y: -10.711584, z: 109.07338}
+  m_Size: {x: 8.747332, y: 35.51737, z: 373.9571}
+  m_Center: {x: 40.053192, y: -10.711584, z: 174.52104}
 --- !u!1001 &437057336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68989,7 +68989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 152676539}
-  PreviousCamera: {fileID: 423770565}
+  PreviousCamera: {fileID: 152676539}
 --- !u!65 &1468724797
 BoxCollider:
   m_ObjectHideFlags: 0

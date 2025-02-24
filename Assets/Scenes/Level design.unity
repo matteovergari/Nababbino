@@ -2002,7 +2002,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 1142562475}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 40
+    FieldOfView: 50
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -2799,7 +2799,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &60391631
 Transform:
   m_ObjectHideFlags: 0
@@ -44588,7 +44588,7 @@ Transform:
   m_GameObject: {fileID: 926565629}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: 88.59, y: 1.98, z: -75.79}
+  m_LocalPosition: {x: 88.59, y: 1.89, z: -75.79}
   m_LocalScale: {x: 9.3381815, y: 3.848871, z: 1.2214134}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44609,7 +44609,7 @@ MonoBehaviour:
   targetObjectToActivate: {fileID: 0}
   targetObjectToActivate2: {fileID: 0}
   targetObjectToActivate3: {fileID: 0}
-  targetObjectToDeactivate: {fileID: 0}
+  targetObjectToDeactivate: {fileID: 1828896148}
   targetObjectToDeactivate2: {fileID: 2096619536}
 --- !u!1001 &926599326
 PrefabInstance:
@@ -63380,7 +63380,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
   m_LocalPosition: {x: 95.39, y: 1.98, z: -82.37}
-  m_LocalScale: {x: 5.704797, y: 3.848871, z: 0.188179}
+  m_LocalScale: {x: 6.1828585, y: 3.848871, z: 1.1163343}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -100131,7 +100131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2096619537
 Transform:
   m_ObjectHideFlags: 0

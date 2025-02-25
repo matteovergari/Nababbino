@@ -43,7 +43,7 @@ public class NababbinoDataParser : MonoBehaviour
 
         Temperature = float.Parse(allDatasAsStrings[9], System.Globalization.CultureInfo.InvariantCulture);
         MicLevel = float.Parse(allDatasAsStrings[16], System.Globalization.CultureInfo.InvariantCulture);
-        Potentiometer = -(float.Parse(allDatasAsStrings[17], System.Globalization.CultureInfo.InvariantCulture) -2f);
+        Potentiometer = float.Parse(allDatasAsStrings[17], System.Globalization.CultureInfo.InvariantCulture);
 
         CapA = int.Parse(allDatasAsStrings[10], System.Globalization.CultureInfo.InvariantCulture);
         CapB = int.Parse(allDatasAsStrings[11], System.Globalization.CultureInfo.InvariantCulture);

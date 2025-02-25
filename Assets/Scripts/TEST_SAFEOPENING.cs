@@ -10,6 +10,7 @@ public class TEST_SAFEOPENING : MonoBehaviour
     public GameObject Door;
     public GameObject WinUI;
     public GameObject GameUI;
+    public GameObject Safe;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +26,11 @@ public class TEST_SAFEOPENING : MonoBehaviour
     {
         String[] allDatasAsStrings = open.Split('/');
 
-        PotentiometerValue = -(float.Parse(allDatasAsStrings[17], System.Globalization.CultureInfo.InvariantCulture) - 2f);
+        PotentiometerValue = float.Parse(allDatasAsStrings[17], System.Globalization.CultureInfo.InvariantCulture);
 
         Door.transform.eulerAngles = new Vector3(0f, (90f * PotentiometerValue)- 70f, 0f);
 
-        if (PotentiometerValue >= 1.8f)
+        if (PotentiometerValue >= 2.8f && Safe.activeSelf)
         {
             SceneManager.LoadScene("SCHERMATA DI VITTORIA");
         } 
